@@ -10,7 +10,6 @@ def transformer_preprocessing_test(test_transformer, test_data):
 
     import numpy as np
     test_data = np.array([1,2,3,4,5,6,7])
-    print(test)
 
 test_transformer = Transformer("test", "Blank", "gRPC")
 
