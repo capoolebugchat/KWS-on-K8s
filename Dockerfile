@@ -9,4 +9,4 @@ RUN pip install --no-cache-dir kserve==0.8.0
 RUN pip install protobuf==3.20.1
 RUN pip install --no-cache-dir -e .
 
-ENTRYPOINT ["python", "-m", "kws_transformer"]
+ENTRYPOINT ["python", "KWSTransformer/kws_transformer.py"]
