@@ -13,7 +13,7 @@ setup(
     description='KWS Audio Transformer',
     long_description=open('README.md').read(),
     python_requires='>=3.8',
-    packages=find_packages("kws_transformer"),
+    packages=find_packages("KWSTransformer/kws_transformer"),
     install_requires=[
         "kserve==0.8.0",
         "scipy"
