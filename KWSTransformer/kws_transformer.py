@@ -55,7 +55,7 @@ class Transformer(Model):
         input_tensors = [audio_transform(instance) for instance in input_request["instances"]]
         logging.info(input_tensors[0].__class__)
         inputs = [input_tensor.tolist() for input_tensor in input_tensors]
-        logging.info(input_tensors[0].__class__)
+        logging.info(inputs[0].__class__)
         request = {"instances": inputs}
         logging.info("Transformer preprocessed request")
         logging.info("Forwarded: ")
