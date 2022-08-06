@@ -48,20 +48,20 @@ class Transformer(Model):
         logging.info("EXPLAINER URL %s", self.explainer_host)
         self.timeout = 100
 
-    async def preprocess(self, request: Dict)-> Dict:
+    async def preprocess(self, input_request: Dict)-> Dict:
         """ Input follows the Tensorflow V1 HTTP API for binary values
         https://www.tensorflow.org/tfx/serving/api_rest#encoding_binary_values """
         
-        input_tensors = [audio_transform(instance) for instance in request["instances"]]
-
+        input_tensors = [audio_transform(instance) for instance in input_request["instances"]]
+        logging.info(input_tensors[0].__class__)
         inputs = [input_tensor.tolist() for input_tensor in input_tensors]
+        logging.info(input_tensors[0].__class__)
         request = {"instances": inputs}
         logging.info("Transformer preprocessed request")
         logging.info("Forwarded: ")
-        logging.info(request)
-        
-        
+        logging.info(request.__class__)
+
         return request
     
-    async def postprocess(self, infer_response):
+    async def postprocess(self, infer_response: Dict)->Dict:
         return infer_response
