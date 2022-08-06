@@ -57,6 +57,9 @@ class Transformer(Model):
         inputs = [input_tensor.tolist() for input_tensor in input_tensors]
         request = {"instances": inputs}
         logging.info("Transformer preprocessed request")
+        logging.info("Forwarded: ")
+        logging.info(request)
+        
         
         return request
     
