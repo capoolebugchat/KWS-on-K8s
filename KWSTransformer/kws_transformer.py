@@ -4,6 +4,7 @@
 
 import kserve
 import logging
+import time
 from kserve import Model, model_server, ModelServer
 import numpy as np
 from typing import Dict, List
@@ -52,16 +53,15 @@ class Transformer(Model):
         """ Input follows the Tensorflow V1 HTTP API for binary values
         https://www.tensorflow.org/tfx/serving/api_rest#encoding_binary_values """
         
+        start = time.time()
         input_tensors = [audio_transform(instance) for instance in input_request["instances"]]
-        logging.info(input_tensors[0].__class__)
         inputs = [input_tensor.tolist() for input_tensor in input_tensors]
-        logging.info(inputs[0].__class__)
         request = {"instances": inputs}
-        logging.info("Transformer preprocessed request")
-        logging.info("Forwarded: ")
-        logging.info(request.__class__)
+        end = time.time()
+        logging.info(f"Transformer preprocessed request. Time: {end-start}")
 
         return request
     
     def postprocess(self, infer_response: Dict)->Dict:
+        
         return infer_response
