@@ -49,7 +49,7 @@ class Transformer(Model):
         logging.info("EXPLAINER URL %s", self.explainer_host)
         self.timeout = 100
 
-    def preprocess(self, input_request: Dict)-> Dict:
+    async def preprocess(self, input_request: Dict)-> Dict:
         """ Input follows the Tensorflow V1 HTTP API for binary values
         https://www.tensorflow.org/tfx/serving/api_rest#encoding_binary_values """
         
